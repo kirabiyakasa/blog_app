@@ -1,0 +1,16 @@
+<h1>Tags</h1>
+
+<ul>
+  <% @tags = @tags.sort_by { |tag| tag[:name]} %>
+  <% @tags.each do |tag| %>
+    <li>
+      <%= link_to "#{tag.name}", tag_path(tag) %>
+      (<%= tag.articles.size %>) &nbsp;
+      <%= link_to "delete", tag_path(tag), method: :delete,
+          data: {confirm: "Really delete this tag?"}, :style=>'color: red;' 
+      %>
+    </li>
+  <% end %>
+</ul><br><br>
+
+<%= link_to "<< Back to Articles List", articles_path %>
