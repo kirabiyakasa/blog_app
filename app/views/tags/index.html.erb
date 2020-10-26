@@ -6,9 +6,11 @@
     <li>
       <%= link_to "#{tag.name}", tag_path(tag) %>
       (<%= tag.articles.size %>) &nbsp;
-      <%= link_to "delete", tag_path(tag), method: :delete,
-          data: {confirm: "Really delete this tag?"}, :style=>'color: red;' 
-      %>
+      <% if logged_in? %>
+        <%= link_to "delete", tag_path(tag), method: :delete,
+            data: {confirm: "Really delete this tag?"}, :style=>'color: red;' 
+        %>
+      <% end %>
     </li>
   <% end %>
 </ul><br><br>
